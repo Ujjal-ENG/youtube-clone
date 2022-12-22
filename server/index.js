@@ -7,6 +7,8 @@ import authRoutes from "./routes/auth.js";
 
 const app = express();
 
+app.use(express.json());
+
 //Database connection are setUp Here
 const connect = () => {
   mongoose
@@ -23,15 +25,11 @@ const connect = () => {
   mongoose.set("strictQuery", true);
 };
 
-
-
 //This here setup the router route
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/videos", videoRoutes);
 app.use("/api/comments", commentRoutes);
-
-
 
 //here app mainly listen
 app.listen(3001, () => {
